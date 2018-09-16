@@ -11,7 +11,6 @@
 //
 
 #include <stdio.h>
-//add include math.h
 
 FILE *fp;
 
@@ -24,51 +23,66 @@ int main(void) {
     int dime = 10;
     int nickel = 5;
     int penny = 1;
-    int amtTendered = 10000; //or 10,000
+    int amtTendered = 10000;
     int itemCost = 2117;
-    int changeAmt; //should be 7,883
-    int twentysNeeded; //should be equal to 3
-    int remainderAfter20s; //should be equal to 1,883
-    int tensNeeded; // should be equal to 1
-    int remainderAfter10s; // should equal 883
-    int fivesNeeded; // should be 1
-    int remainderAfter5s; // should equal 383
-    int onesNeeded; //should equal 3
-    int remainderAfter1s; //should equal 83
-    int quartersNeeded; // should equal 3
-    int remainderAfter25c; // should equal 8
-    int nickelsNeeded; // should equal 1
-    int remainderAfter5c; // should equal 3
-    int penniesNeeded; // should equal 3
-    int remainderAfter1c;// should equal 0
+    int changeAmt;
+    int twentysNeeded;
+    int tensNeeded;
+    int fivesNeeded;
+    int onesNeeded;
+    int quartersNeeded;
+    int dimesNeeded;
+    int nickelsNeeded;
+    int penniesNeeded;
+
+    fp = fopen("csis.txt", "w");
     
     changeAmt = amtTendered - itemCost;
     
     twentysNeeded = changeAmt / twenty;
-    remainderAfter20s = changeAmt % twenty;
+    changeAmt = changeAmt % twenty;
     
-    tensNeeded = remainderAfter20s / ten;
-    remainderAfter10s = remainderAfter20s % ten;
+    tensNeeded = changeAmt / ten;
+    changeAmt = changeAmt % ten;
     
-    fivesNeeded = remainderAfter10s / five;
-    remainderAfter5s = remainderAfter10s % five;
+    fivesNeeded = changeAmt / five;
+    changeAmt = changeAmt % five;
     
-    onesNeeded = remainderAfter5s / one;
-    remainderAfter1s = remainderAfter5s % one;
+    onesNeeded = changeAmt / one;
+    changeAmt = changeAmt % one;
     
-    quartersNeeded = remainderAfter1s / quarter;
-    remainderAfter25c = remainderAfter1s % quarter;
+    quartersNeeded = changeAmt / quarter;
+    changeAmt = changeAmt % quarter;
     
-    nickelsNeeded = remainderAfter25c / nickel;
-    remainderAfter5c = remainderAfter25c % nickel;
+    dimesNeeded = changeAmt / dime;
+    changeAmt = changeAmt % dime;
     
-    penniesNeeded = remainderAfter5c / penny;
-    remainderAfter1c = remainderAfter5c % penny;
+    nickelsNeeded = changeAmt / nickel;
+    changeAmt = changeAmt % nickel;
     
+    penniesNeeded = changeAmt / penny;
+    changeAmt = changeAmt % penny;
     
-    //after variable declarations include the stmt fp = fopen("csis.txt", "w");
-    fp = fopen("csis.txt", "w");
-    
-    printf("Hello, World!\n");
+    printf("%s %s\n", "Amount Tendered: ", "$100.00");
+    fprintf(fp, "%s %s\n", "Amount Tendered: ", "$100.00");
+    printf("%s %12s\n", "Item Cost: ", "$21.17");
+    fprintf(fp, "%s %12s\n", "Item Cost: ", "$21.17");
+    printf("%s %10d\n", "Twenties: ", twentysNeeded);
+    fprintf(fp, "%s %10d\n", "Twenties: ", twentysNeeded);
+    printf("%s %14d\n", "Tens: ", tensNeeded);
+    fprintf(fp, "%s %14d\n", "Tens: ", tensNeeded);
+    printf("%s %13d\n", "Fives: ", fivesNeeded);
+    fprintf(fp, "%s %13d\n", "Fives: ", fivesNeeded);
+    printf("%s %14d\n", "Ones: ", onesNeeded);
+    fprintf(fp, "%s %14d\n", "Ones: ", onesNeeded);
+    printf("%s %10d\n", "Quarters: ", quartersNeeded);
+    fprintf(fp, "%s %10d\n", "Quarters: ", quartersNeeded);
+    printf("%s %13d\n", "Dimes: ", dimesNeeded);
+    fprintf(fp, "%s %13d\n", "Dimes: ", dimesNeeded);
+    printf("%s %11d\n", "Nickels: ", nickelsNeeded);
+    fprintf(fp, "%s %11d\n", "Nickels: ", nickelsNeeded);
+    printf("%s %11d\n", "Pennies: ", penniesNeeded);
+    fprintf(fp, "%s %11d\n", "Pennies: ", penniesNeeded);
+
     return 0;
 }

@@ -1,0 +1,10 @@
+Amount Tendered:  $100.00
+Item Cost:        $21.17
+Twenties:           3
+Tens:               1
+Fives:              1
+Ones:               3
+Quarters:           3
+Dimes:              0
+Nickels:            1
+Pennies:            3
